@@ -19,8 +19,8 @@ class CreatePlaquetasTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
             
-            $table->integer('id_leilao')->unsigned();
-            $table->foreign('id_leilao')->references('id')->on('leilaos');
+            $table->integer('id_lote')->unsigned();
+            $table->foreign('id_lote')->references('id')->on('lotes');
 
             $table->float('lance')->nullalbe();
             $table->string('plaqueta')->nullalbe();
