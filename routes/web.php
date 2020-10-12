@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 
 Route::get('/adm/login', 'Admin\Login@index')->name("admin-login");
-Route::post('/adm/login', 'Admin\Login@index')->name("admin-login");
+Route::post('/adm/login', 'Admin\Login@store')->name("admin-login");
+Route::get('/adm/logout', 'Admin\Login@logout')->name("admin-logout");
 
-Route::group(['prefix' => 'adm'], function () {
+Route::group(['prefix' => 'adm', 'middleware' => 'VerifyAdminLogin'], function () {
     Route::get('/', 'Admin\Dashboard@index')->name("admin-dashboard");
 
     Route::get('/lote', 'Admin\Lote@index')->name("admin-lote");

@@ -23,10 +23,17 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Faça login para iniciar sua sessão</p>
-
+      @if (\Session::has('error'))
+          <div class="alert alert-danger">
+              <ul>
+                  <li>{!! \Session::get('error') !!}</li>
+              </ul>
+          </div>
+      @endif
       <form action="{{route("admin-login")}}" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="text" name="login" class="form-control" placeholder="Login">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -34,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="Senha" class="form-control" placeholder="Senha">
+          <input type="password" name="password" class="form-control" placeholder="Senha">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -44,7 +51,7 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+              <input type="checkbox" id="remember" name="remember">
               <label for="remember">
                 Lembre de mim
               </label>
