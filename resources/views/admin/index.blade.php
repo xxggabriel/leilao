@@ -26,21 +26,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>7</h3>
-  
-                  <p>Lotes</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="{{route("admin-lote")}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
+            
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-success">
@@ -56,6 +42,23 @@
               </div>
             </div>
             <!-- ./col -->
+
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3>7</h3>
+  
+                  <p>Lotes</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="{{route("admin-lote")}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-warning">

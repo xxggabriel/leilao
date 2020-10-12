@@ -201,22 +201,21 @@
             </a>
           </li>
 
-
-          <li class="nav-item">
-            <a href="{{route("admin-lote")}}" class="nav-link">
-              <i class="nav-icon fas fa-box-open"></i>
-              <p>
-                Lote
-              </p>
-            </a>
-          </li>
-
           <li class="nav-item">
             <a href="{{route("admin-leilao")}}" class="nav-link">
               
               <i class="nav-icon fas fa-gavel"></i>
               <p>
                 Leilão
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route("admin-lote")}}" class="nav-link">
+              <i class="nav-icon fas fa-box-open"></i>
+              <p>
+                Lote
               </p>
             </a>
           </li>
