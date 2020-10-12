@@ -57,16 +57,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
+                                            @foreach ($leiloes as $leilao)
                                             <tr role="row" class="odd">
                                                 <td><img src="#" alt=""></td>
-                                                <td><a href="#">Leilão Da receita federal</a></td>
-                                                <td>leilao-receita-federal</td>
+                                                <td><a href="#">{{$leilao->nome}}</a></td>
+                                                <td>{{$leilao->url}}</td>
                                                 <td>
                                                     <button class="btn-xs btn-primary">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>

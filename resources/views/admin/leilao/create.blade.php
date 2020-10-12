@@ -34,8 +34,25 @@
                   <div class="card card-primary">
 
                     <!-- /.card-header -->
-                    <!-- form start -->
-                    <form role="form" id="quickForm" novalidate="novalidate">
+                    <!-- form start --> 
+                    @if (\Session::has('error'))
+                        <div class="alert alert-danger">
+                            <ul>
+                                <li>{!! \Session::get('error') !!}</li>
+                            </ul>
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="POST">
+                      @csrf
                       <div class="card-body">
 
                         <div class="row">

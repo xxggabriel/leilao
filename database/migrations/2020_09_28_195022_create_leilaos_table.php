@@ -23,17 +23,17 @@ class CreateLeilaosTable extends Migration
             $table->string('foto');
             $table->string('url');
 
-            $table->string('cep')->nullalbe();
-            $table->string('uf')->nullalbe();
-            $table->string('cidade')->nullalbe();
-            $table->string('endereco')->nullalbe();
-            $table->string('bairro')->nullalbe();
-            $table->string('numero')->nullalbe();
-            $table->string('complemento')->nullalbe();
+            $table->string('cep')->nullable();
+            $table->string('uf')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('endereco')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('numero')->nullable();
+            $table->string('complemento')->nullable();
 
-            $table->string('localidade')->nullalbe(); // Goiânia; GO
-            $table->string('latitude')->nullalbe();
-            $table->string('longitude')->nullalbe();
+            $table->string('localidade')->nullable(); // Goiânia; GO
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             
             $table->integer('status');
             $table->timestamps();

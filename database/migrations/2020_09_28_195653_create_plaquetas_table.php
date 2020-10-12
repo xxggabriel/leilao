@@ -22,8 +22,8 @@ class CreatePlaquetasTable extends Migration
             $table->integer('id_lote')->unsigned();
             $table->foreign('id_lote')->references('id')->on('lotes');
 
-            $table->float('lance')->nullalbe();
-            $table->string('plaqueta')->nullalbe();
+            $table->float('lance')->nullable();
+            $table->string('plaqueta')->nullable();
             $table->string('status')->default(1);
 
             $table->timestamps();
