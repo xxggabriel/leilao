@@ -47,34 +47,38 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                                    <table class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" >Nome</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Categoria</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Data Início</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Data Fim</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Lance Inícial</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Tipo</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Modalidade</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Ação</th>
+                                                <th>Nome</th>
+                                                <th>Categoria</th>
+                                                <th>Data Início</th>
+                                                <th>Data Fim</th>
+                                                <th>Lance Inícial</th>
+                                                <th>Tipo</th>
+                                                <th>Modalidade</th>
+                                                <th>Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($lotes as $lote)
                                             <tr role="row" class="odd">
-                                                <td><a href="#">VOLKSWAGEN - AMAROK CD 4X4 HIGH</a></td>
-                                                <td>Carro</td>
-                                                <td>28/09/2020 às 12:00</td>
-                                                <td>30/09/2020 às 10:49</td>
-                                                <td>30.000,00</td>
-                                                <td>JUDICIAL</td>
-                                                <td>ON LINE E PRESENCIAL</td>
+                                                <td><a href="#">{{$lote->nome}}</a></td>
+                                                <td>{{$lote->categoria}}</td>
+                                                <td>{{$lote->data_init}}</td>
+                                                <td>{{$lote->data_fim}}</td>
+                                                <td>{{$lote->lance_inicial}}</td>
+                                                <td>{{$lote->tipo}}</td>
+                                                <td>{{$lote->modalidade}}</td>
                                                 <td>
-                                                    <button class="btn-xs btn-primary">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
+                                                    <a href="{{route("admin-lote-edit", $lote->id)}}">
+                                                        <button class="btn-xs btn-primary">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>

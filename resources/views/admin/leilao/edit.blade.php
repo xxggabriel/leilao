@@ -57,9 +57,10 @@
 
                         <div class="row">
                           <div class="col">
+                              <img src="{{ Storage::url($leilao->foto)}}" alt="" style="width: 100px">
                               <div class="form-group">
-                                  <label for="foto">Foto pricipal <span style="color: #FF0000">*</span></label>
-                                  <input type="file" required name="foto" class="form-control-file"  accept="image/*" id="foto" placeholder="foto" >
+                                  <label for="foto">Foto pricipal <span style="color: #FF0000">*</span> </label>
+                                  <input type="file" name="foto" class="form-control-file"  accept="image/*" id="foto" placeholder="foto" >
                               </div>
                           </div>
                       </div>
@@ -68,13 +69,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="nome">Nome <span style="color: #FF0000">*</span></label>
-                                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" >
+                                    <input type="text" value="{{$leilao->nome}}" name="nome" class="form-control" id="nome" placeholder="Nome" >
                                   </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="url">URL <span style="color: #FF0000">*</span></label>
-                                    <input type="text" name="url" class="form-control" id="url" placeholder="URL" >
+                                    <input type="text" value="{{$leilao->url}}" name="url" class="form-control" id="url" placeholder="URL" >
                                   </div>
                             </div>
                         </div>
@@ -90,13 +91,13 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="uf">UF</label>
-                              <input type="text" name="uf" class="form-control" id="uf" placeholder="Ex: SP" >
+                              <input type="text" value="{{$leilao->uf}}" name="uf" class="form-control" id="uf" placeholder="Ex: SP" >
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
                               <label for="cidade">Cidade</label>
-                              <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Ex: São Paulo" >
+                              <input type="text" value="{{$leilao->cidade}}" name="cidade" class="form-control" id="cidade" placeholder="Ex: São Paulo" >
                           </div>
                         </div>
                       </div>
@@ -105,13 +106,13 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="endereco">Endereço</label>
-                              <input type="text" name="endereco" class="form-control" id="endereco"  placeholder="Ex: Rua 14 Lote 7..." >
+                              <input type="text" value="{{$leilao->endereco}}" name="endereco" class="form-control" id="endereco"  placeholder="Ex: Rua 14 Lote 7..." >
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
                               <label for="bairro">Bairro</label>
-                              <input type="text" name="bairro" class="form-control" id="bairro"  placeholder="Ex: Santo André" >
+                              <input type="text" value="{{$leilao->bairro}}" name="bairro" class="form-control" id="bairro"  placeholder="Ex: Santo André" >
                           </div>
                         </div>
                       </div>
@@ -120,13 +121,13 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="numero">Número</label>
-                              <input type="text" name="numero" class="form-control" id="numero"  >
+                              <input type="text" value="{{$leilao->numero}}" name="numero" class="form-control" id="numero"  >
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
                               <label for="complemento">Complemento</label>
-                              <input type="text" name="complemento" class="form-control" id="complemento"  placeholder="Ex: Em frente a padaria Santa Luz" >
+                              <input type="text" value="{{$leilao->complemento}}" name="complemento" class="form-control" id="complemento"  placeholder="Ex: Em frente a padaria Santa Luz" >
                           </div>
                         </div>
                       </div>                    
@@ -135,13 +136,13 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="latitude">Latitude</label>
-                              <input type="text" class="form-control" name="latitude" id="latitude" placeholder="-22.95162" >
+                              <input type="text" class="form-control" value="{{$leilao->latitude}}" name="latitude" id="latitude" placeholder="-22.95162" >
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
                               <label for="longitude">Longitude</label>
-                              <input type="text" class="form-control" name="longitude" id="longitude" placeholder="-43.21077" >
+                              <input type="text" class="form-control" value="{{$leilao->longitude}}" name="longitude" id="longitude" placeholder="-43.21077" >
                           </div>
                         </div>
                       </div>
@@ -150,15 +151,26 @@
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
                               <label for="localidade">Localidade</label>
-                              <input type="text" class="form-control" name="localidade" id="localidade" placeholder="CarBus, São Paulo, SA" >
+                              <input type="text" class="form-control" value="{{$leilao->localidade}}" name="localidade" id="localidade" placeholder="CarBus, São Paulo, SA" >
                           </div>
                         </div>
 
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
                             <label for="status">Status <span style="color: #FF0000">*</span></label>
-                            <select name="status" required id="status" class="form-control">
-                              <option value="">Selecione o status do leilão </option>
+                            <select  name="status" required id="status" class="form-control">
+                              <option value="{{$leilao->status}}">
+                              @if($leilao->status == "0")
+                              Não visivel
+                              @elseif($leilao->status == "1")
+                              Normal
+                              @elseif($leilao->status == "2")
+                              Reagendado
+                              @elseif($leilao->status == "3")
+                              Cancelado                             
+                              @endif
+                              
+                              </option>
                               <option value="0">Não visivel</option>
                               <option value="1">Normal</option>
                               <option value="2">Reagendado</option>
@@ -172,7 +184,7 @@
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Criar</button>
+                        <button type="submit" class="btn btn-primary">Atualizar</button>
                       </div>
                     </form>
                   </div>
@@ -193,6 +205,7 @@
   </section>
   <!-- /.content -->
 </div>
+
 <script>
     
   function limpa_formulário_cep() {

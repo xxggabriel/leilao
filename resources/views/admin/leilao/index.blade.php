@@ -12,7 +12,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route("admin-dashboard")}}">Home</a></li>
             <li class="breadcrumb-item active">Leilão</li>
           </ol>
         </div><!-- /.col -->
@@ -50,23 +50,25 @@
                                     <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Foto</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Nome</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >URL</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Ação</th>
+                                                <th style="width: 125px">Foto</th>
+                                                <th>Nome</th>
+                                                <th>URL</th>
+                                                <th>Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                             @foreach ($leiloes as $leilao)
                                             <tr role="row" class="odd">
-                                                <td><img src="#" alt=""></td>
+                                                <td><img src="{{ Storage::url($leilao->foto)}}" width="100px" alt=""></td>
                                                 <td><a href="#">{{$leilao->nome}}</a></td>
                                                 <td>{{$leilao->url}}</td>
                                                 <td>
-                                                    <button class="btn-xs btn-primary">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
+                                                    <a href="{{route("admin-leilao-edit", $leilao->id)}}">
+                                                        <button class="btn-xs btn-primary">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Leilao;
+use App\Models\Lote as ModelsLote;
 
 class Lote extends Controller
 {
@@ -14,7 +16,8 @@ class Lote extends Controller
      */
     public function index()
     {
-        return view("admin.lote.index");
+        $lotes = ModelsLote::all();
+        return view("admin.lote.index", compact("lotes"));
     }
 
     /**
@@ -24,7 +27,8 @@ class Lote extends Controller
      */
     public function create()
     {
-        return view("admin.lote.create");
+        $leiloes = Leilao::all();
+        return view("admin.lote.create", compact("leiloes"));
     }
 
     /**
@@ -35,7 +39,7 @@ class Lote extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

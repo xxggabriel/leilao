@@ -35,13 +35,13 @@
                    
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" id="quickForm" novalidate="novalidate">
+                    <form method="POST" enctype="multipart/form-data">
                       <div class="card-body">
 
                         <div class="row">
                           <div class="col">
                               <div class="form-group">
-                                  <label for="foto">Foto pricipal</label>
+                                  <label for="foto">Foto pricipal <span style="color: red">*</span></label>
                                   <input type="file" name="foto" class="form-control-file" accept="image/*" id="foto" placeholder="foto" >
                               </div>
                           </div>
@@ -56,12 +56,12 @@
                       <div class="row">
                         <div class="col col-sm-6">
                           <div class="form-group">
-                              <label for="id-leilao">Leilão</label>
+                              <label for="id-leilao">Leilão <span style="color: red">*</span></label>
                               <select name="id-leilao" required id="id-leilao" class="form-control">
-                                <option value="1">Selecione o leilão do Lote </option>
-                                <option value="2">Leilão dos caminhoes tunados</option>
-                                <option value="5">Leilão da receita federal </option>
-                                <option value="9">RJ Leilões</option>
+                                <option value="">Selecione o leilao</option>
+                                @foreach ($leiloes as $leilao)
+                                <option value="{{$leilao->id}}">{{$leilao->nome}}</option>
+                                @endforeach
                               </select>
                           </div>
                         </div>
@@ -70,13 +70,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="nome">Nome</label>
+                                    <label for="nome">Nome <span style="color: red">*</span></label>
                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" >
                                   </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="url">URL</label>
+                                    <label for="url">URL <span style="color: red">*</span></label>
                                     <input type="text" name="url" class="form-control" id="url" placeholder="URL" >
                                   </div>
                             </div>
@@ -85,22 +85,33 @@
                         <div class="row">
                           <div class="col">
                               <div class="form-group">
-                                  <label for="data-init">Data ínicio</label>
-                                  <input type="datetime-local" name="data-init" class="form-control" id="data-init" >
+                                  <label for="data-init">Data ínicio <span style="color: red">*</span></label>
+                                  <input type="datetime-local" name="data-init" class="form-control" id="data-init" placeholder="DD-MM-AAAA HH:MM">
+                                  <small id="passwordHelpBlock" class="form-text text-muted">
+                                    É obrigatorio o formato dia (DD), mês (MM), ano (AAAA), hora(s) (HH), minuto(s) (MM) <br>DD-MM-AAAA HH:MM
+                                  </small>
                               </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
-                                <label for="data-fim">Data Final</label>
-                                <input type="datetime-local" name="data-fim" class="form-control" id="data-fim" >
+                                <label for="data-fim">Data Final <span style="color: red">*</span></label>
+                                <input type="datetime-local" name="data-fim" class="form-control" id="data-fim" placeholder="DD-MM-AAAA HH:MM">
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                  É obrigatorio o formato dia (DD), mês (MM), ano (AAAA), hora(s) (HH), minuto(s) (MM) <br>DD-MM-AAAA HH:MM
+                                </small>
                             </div>
                         </div>
                       </div>
 
+                      <script>
+                        $("#data-init").mask("00-00-0000 00:00");
+                        $("#data-fim").mask("00-00-0000 00:00");
+                      </script>
+
                       <div class="row">
                         <div class="col">
                           <div class="form-group">
-                              <label for="categoria">Categoria</label>
+                              <label for="categoria">Categoria <span style="color: red">*</span></label>
                               <input type="text" name="categoria" class="form-control" id="categoria" placeholder="Ex: Carro, Moto, Celular..." >
                           </div>
                         </div>
@@ -142,7 +153,7 @@
                         </div>
                         <div class="col">
                           <div class="form-group">
-                              <label for="tipo">Tipo</label>
+                              <label for="tipo">Tipo <span style="color: red">*</span></label>
                               <select name="tipo" id="tipo" class="form-control">
                                 <option value="">Selecione o tipo do Lote </option>
                                 <option value="Extrajudicial">Extrajudicial</option>
@@ -155,7 +166,7 @@
                       <div class="row">
                         <div class="col">
                           <div class="form-group">
-                              <label for="modalidade">Modalidade</label>
+                              <label for="modalidade">Modalidade <span style="color: red">*</span></label>
                               <select name="modalidade" required id="modalidade" class="form-control">
                                 <option value="">Selecione a modalidade do Lote </option>
                                 <option value="1">Online</option>
@@ -194,7 +205,7 @@
                       <div class="row">
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
-                            <label for="status">Status</label>
+                            <label for="status">Status <span style="color: red">*</span></label>
                             <select name="status" required id="status" class="form-control">
                               <option value="">Selecione o status do Lote </option>
                               <option value="0">Não visivel</option>
