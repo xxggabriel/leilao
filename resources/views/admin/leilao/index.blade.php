@@ -47,6 +47,20 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
+                                    @if (\Session::has('error'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <li>{!! \Session::get('error') !!}</li>
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    @if (\Session::has('message'))
+                                        <div class="alert alert-primary">
+                                            <ul>
+                                                <li>{!! \Session::get('message') !!}</li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
                                         <thead>
                                             <tr role="row">

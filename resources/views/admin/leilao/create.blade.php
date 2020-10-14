@@ -84,7 +84,7 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="cep">CEP</label>
-                              <input type="text" value="{{$leilao->cep}}" name="cep" class="form-control" id="cep" maxlength="8" onblur="pesquisacep(this.value);">
+                              <input type="text"  name="cep" class="form-control" id="cep" maxlength="8" onblur="pesquisacep(this.value);">
                           </div>
                         </div>
                         <div class="col">

@@ -32,10 +32,26 @@
                 <div class="col-md-12">
                   <!-- jquery validation -->
                   <div class="card card-primary">
-                   
+                    @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{!! \Session::get('error') !!}</li>
+                        </ul>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form method="POST" enctype="multipart/form-data">
+                      @csrf
                       <div class="card-body">
 
                         <div class="row">
@@ -48,7 +64,7 @@
                           <div class="col">
                             <div class="form-group">
                                 <label for="foto">Fotos</label>
-                                <input type="file" name="fotos" multiple class="form-control-file" accept="image/*" id="fotos" placeholder="foto" >
+                                <input type="file" name="fotos[]" multiple class="form-control-file" accept="image/*" id="fotos" placeholder="foto" >
                             </div>
                         </div>
                       </div>
@@ -65,19 +81,25 @@
                               </select>
                           </div>
                         </div>
+                        <div class="col">
+                          <div class="form-group">
+                              <label for="lote">LOTE <span style="color: red">*</span></label>
+                              <input type="number" required min="0" name="lote" class="form-control" id="lote" placeholder="Ex: Lote: 01" >
+                            </div>
+                        </div>
                       </div>
 
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="nome">Nome <span style="color: red">*</span></label>
-                                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" >
+                                    <input type="text" name="nome" required class="form-control" id="nome" placeholder="Nome" >
                                   </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="url">URL <span style="color: red">*</span></label>
-                                    <input type="text" name="url" class="form-control" id="url" placeholder="URL" >
+                                    <input type="text" name="url" required class="form-control" id="url" placeholder="URL" >
                                   </div>
                             </div>
                         </div>
@@ -86,7 +108,7 @@
                           <div class="col">
                               <div class="form-group">
                                   <label for="data-init">Data ínicio <span style="color: red">*</span></label>
-                                  <input type="datetime-local" name="data-init" class="form-control" id="data-init" placeholder="DD-MM-AAAA HH:MM">
+                                  <input type="datetime-local" required name="data-init" class="form-control" id="data-init" placeholder="DD-MM-AAAA HH:MM">
                                   <small id="passwordHelpBlock" class="form-text text-muted">
                                     É obrigatorio o formato dia (DD), mês (MM), ano (AAAA), hora(s) (HH), minuto(s) (MM) <br>DD-MM-AAAA HH:MM
                                   </small>
@@ -95,7 +117,7 @@
                           <div class="col">
                             <div class="form-group">
                                 <label for="data-fim">Data Final <span style="color: red">*</span></label>
-                                <input type="datetime-local" name="data-fim" class="form-control" id="data-fim" placeholder="DD-MM-AAAA HH:MM">
+                                <input type="datetime-local" required name="data-fim" class="form-control" id="data-fim" placeholder="DD-MM-AAAA HH:MM">
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                   É obrigatorio o formato dia (DD), mês (MM), ano (AAAA), hora(s) (HH), minuto(s) (MM) <br>DD-MM-AAAA HH:MM
                                 </small>
@@ -112,7 +134,7 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="categoria">Categoria <span style="color: red">*</span></label>
-                              <input type="text" name="categoria" class="form-control" id="categoria" placeholder="Ex: Carro, Moto, Celular..." >
+                              <input type="text" name="categoria" required class="form-control" id="categoria" placeholder="Ex: Carro, Moto, Celular..." >
                           </div>
                         </div>
                         <div class="col">
@@ -154,7 +176,7 @@
                         <div class="col">
                           <div class="form-group">
                               <label for="tipo">Tipo <span style="color: red">*</span></label>
-                              <select name="tipo" id="tipo" class="form-control">
+                              <select name="tipo" id="tipo" required class="form-control">
                                 <option value="">Selecione o tipo do Lote </option>
                                 <option value="Extrajudicial">Extrajudicial</option>
                                 <option value="Recuperação de financiamento">Recuperação de financiamento</option>

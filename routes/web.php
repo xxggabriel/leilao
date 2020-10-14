@@ -26,9 +26,9 @@ Route::group(['prefix' => 'adm', 'middleware' => 'VerifyAdminLogin'], function (
     Route::get('/lote', 'Admin\Lote@index')->name("admin-lote");
     Route::get('/lote/create', 'Admin\Lote@create')->name("admin-lote-create");
     Route::post('/lote/create', 'Admin\Lote@store');
-    Route::get('/lote/show/{id}', 'Admin\Lote@store')->name("admin-lote-show");
-    Route::get('/lote/show/{id}/edit', 'Admin\Lote@edit')->name("admin-lote-edit");
-    Route::post('/lote/show/{id}/edit', 'Admin\Lote@update');
+    Route::get('/lote/{id}', 'Admin\Lote@store')->name("admin-lote-show");
+    Route::get('/lote/{id}/edit', 'Admin\Lote@edit')->name("admin-lote-edit");
+    Route::post('/lote/{id}/edit', 'Admin\Lote@update');
 
 
     Route::get('/banner', 'Admin\Dashboard@index')->name("admin-banner");

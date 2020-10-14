@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Leilao as ModelsLeilao;
+use App\Http\Controllers\Ultils\ImagemController;
 
 class Leilao extends Controller
 {
@@ -54,37 +55,13 @@ class Leilao extends Controller
             "status"        => "required|numeric",
         ]);
 
-        // Define o valor default para a variável que contém o nome da imagem 
-        $nameFile = null;
-
-        // Verifica se informou o arquivo e se é válido
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            
-            // Define um aleatório para o arquivo baseado no timestamps atual
-            $name = uniqid(date('HisYmd'));
-    
-            // Recupera a extensão do arquivo
-            $extension = $request->foto->extension();
-    
-            // Define finalmente o nome
-            $nameFile = "{$name}.{$extension}";
-    
-            // Faz o upload:
-            $upload = $request->foto->storeAs('public/leilao', $nameFile);
-            // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
-    
-            // Verifica se NÃO deu certo o upload (Redireciona de volta)
-            if ( !$upload )
-                return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao fazer upload')
-                            ->withInput();
-        }
+        
+        $nameFile = ImagemController::saveImage($request, "foto", "leilao");
 
         $leilao = new ModelsLeilao();
         $leilao->id_user = User::user()->id;
         $leilao->nome = $request->input("nome");
-        $leilao->foto = "/leilao/".$nameFile;
+        $leilao->foto = $nameFile;
         $leilao->url = $request->input("url");
         $leilao->cep = $request->input("cep");
         $leilao->uf = $request->input("uf");
@@ -156,38 +133,16 @@ class Leilao extends Controller
             "status"        => "required|numeric",
         ]);
 
-        // Define o valor default para a variável que contém o nome da imagem 
-        $nameFile = null;
+        
+        $nameFile = ImagemController::saveImage($request, "foto", "leilao");
 
-        // Verifica se informou o arquivo e se é válido
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            
-            // Define um aleatório para o arquivo baseado no timestamps atual
-            $name = uniqid(date('HisYmd'));
-    
-            // Recupera a extensão do arquivo
-            $extension = $request->foto->extension();
-    
-            // Define finalmente o nome
-            $nameFile = "{$name}.{$extension}";
-    
-            // Faz o upload:
-            $upload = $request->foto->storeAs('public/leilao', $nameFile);
-            // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
-    
-            // Verifica se NÃO deu certo o upload (Redireciona de volta)
-            if ( !$upload )
-                return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao fazer upload')
-                            ->withInput();
-        }
-        $nameFile = $nameFile != null ? "/leilao/".$nameFile : null;
+        $nameFile = $nameFile != null ? $nameFile : null;
         $leilao = ModelsLeilao::find($id);
         $leilao->id_user = User::user()->id;
         $leilao->nome = $request->input("nome")                 ?? $leilao->nome;
         $leilao->foto = $nameFile                               ?? $leilao->foto;
         $leilao->url = $request->input("url")                   ?? $leilao->url;
+        $leilao->lote = $request->input("lote")                 ?? $leilao->lote;
         $leilao->cep = $request->input("cep")                   ?? $leilao->cep;
         $leilao->uf = $request->input("uf")                     ?? $leilao->uf;
         $leilao->cidade = $request->input("cidade")             ?? $leilao->cidade;
