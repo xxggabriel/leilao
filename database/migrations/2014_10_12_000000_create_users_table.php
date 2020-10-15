@@ -18,8 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('login')->unique();
             $table->string('password');
-            $table->integer('privilegio'); // 1 Admin; 2 Administração; 5 Cliente
-            $table->integer('privilegio_admin')->nullable(); // 1 Admin; 2 Administração; 5 Cliente
+            $table->integer('privilegio'); // 1 Admin (Acesso total); 2 Administração; 3 Financeiro 
             $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();

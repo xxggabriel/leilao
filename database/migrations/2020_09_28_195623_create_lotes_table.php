@@ -32,15 +32,17 @@ class CreateLotesTable extends Migration
             $table->integer('views')->default(0);
             $table->string('categoria'); // Carro; Moto; Aviao
 
-            $table->string('data_init');
-            $table->string('data_fim');
-            $table->string('codigo')->nullalbe();   
-            $table->float('lance_inicial')->nullalbe();
-            $table->float('lance_minimo')->nullalbe();
+            $table->dateTime('data_init', 0);
+            $table->dateTime('data_fim', 0);
+               
+            $table->float('lance_inicial');
+            $table->float('lance_atual')->default(0);
+            $table->float('lance_minimo')->nullable();
             
             $table->string('tipo'); // 1 Recuperados de Financiamento; 2 Precensial; Simuntaneio; 
             $table->integer('modalidade'); // 1 Online; 2 Precensial; Simuntaneio; 
             
+            $table->string('codigo')->nullable();
             $table->longText('aovivo')->nullable();;
             $table->longText('descricao')->nullable();
             $table->longText('informacoes')->nullable();

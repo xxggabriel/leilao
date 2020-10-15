@@ -31,14 +31,14 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53</h3>
+                  <h3>{{$leiloes->count()}}</h3>
   
                   <p>Leilões</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="{{route("admin-lote")}}" class="small-box-footer">Main informações <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route("admin-leilao")}}" class="small-box-footer">Main informações <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -47,7 +47,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>7</h3>
+                  <h3>{{$lotes->count()}}</h3>
   
                   <p>Lotes</p>
                 </div>
@@ -78,7 +78,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <h3>{{$clientes->count()}}</h3>
   
                   <p>Novos Clientes</p>
                 </div>

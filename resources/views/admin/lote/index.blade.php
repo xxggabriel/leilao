@@ -81,9 +81,24 @@
                                                 <td>{{$lote->categoria}}</td>
                                                 <td>{{$lote->data_init}}</td>
                                                 <td>{{$lote->data_fim}}</td>
-                                                <td>{{$lote->lance_inicial}}</td>
+                                                <td>{{money_format("%(#10n", $lote->lance_inicial)}}</td>
                                                 <td>{{$lote->tipo}}</td>
-                                                <td>{{$lote->modalidade}}</td>
+                                                <td>
+                                                    @switch($lote->modalidade)
+                                                        @case(1)
+                                                            Online
+                                                            @break
+                                                        @case(2)
+                                                            Precensial
+                                                            @break
+                                                        @case(3)
+                                                            Online e Precensial
+                                                            @break
+                                                        @default
+                                                            
+                                                    @endswitch
+                                                    
+                                                </td>
                                                 <td>
                                                     <a href="{{route("admin-lote-edit", $lote->id)}}">
                                                         <button class="btn-xs btn-primary">

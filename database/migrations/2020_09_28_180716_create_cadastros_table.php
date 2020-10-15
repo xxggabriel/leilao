@@ -16,9 +16,6 @@ class CreateCadastrosTable extends Migration
         Schema::create('cadastros', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users');
-
             $table->string('nome');
             $table->string('sobrenome');
             $table->string('documento');

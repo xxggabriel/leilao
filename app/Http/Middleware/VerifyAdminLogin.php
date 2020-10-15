@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Cookie;
 
@@ -16,9 +17,15 @@ class VerifyAdminLogin
      */
     public function handle($request, Closure $next)
     {
-         
-        if(session()->get("admin-login") || Cookie::get('admin-login')){
-            return $next($request);
+        $admin = session()->get("admin-login-user") ?? Cookie::get('admin-login-user');
+        $admin = json_decode($admin);
+        
+        if($admin){
+            $result = User::where("id", $admin->id)->where("login", $admin->login)->first();
+                
+            if($result){
+                return $next($request);
+            }
         }
         
         return redirect()->route("admin-login");

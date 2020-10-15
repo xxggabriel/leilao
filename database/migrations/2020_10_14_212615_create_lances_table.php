@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlaquetasTable extends Migration
+class CreateLancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePlaquetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('plaquetas', function (Blueprint $table) {
+        Schema::create('lances', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('id_user')->unsigned();
@@ -23,7 +23,6 @@ class CreatePlaquetasTable extends Migration
             $table->foreign('id_lote')->references('id')->on('lotes');
 
             $table->float('lance')->nullable();
-            $table->string('plaqueta')->nullable();
             $table->string('status')->default(1);
 
             $table->timestamps();
@@ -37,6 +36,6 @@ class CreatePlaquetasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plaquetas');
+        Schema::dropIfExists('lances');
     }
 }

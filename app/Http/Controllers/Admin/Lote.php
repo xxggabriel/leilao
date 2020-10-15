@@ -83,6 +83,7 @@ class Lote extends Controller
         $lote->data_fim         = $request->input("data-fim");
         $lote->codigo           = $request->input("codigo");
         $lote->lance_inicial    = str_replace(",", ".", str_replace(".", "", $request->input("lance-inicial")));
+        $lote->lance_atual      = $lote->lance_inicial;
         $lote->lance_minimo     = str_replace(",", ".", str_replace(".", "", $request->input("lance-minimo")));
         $lote->tipo             = $request->input("tipo");
         $lote->modalidade       = $request->input("modalidade");

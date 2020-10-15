@@ -109,26 +109,17 @@
                               <div class="form-group">
                                   <label for="data-init">Data ínicio <span style="color: red">*</span></label>
                                   <input type="datetime-local" required name="data-init" class="form-control" id="data-init" placeholder="DD-MM-AAAA HH:MM">
-                                  <small id="passwordHelpBlock" class="form-text text-muted">
-                                    É obrigatorio o formato dia (DD), mês (MM), ano (AAAA), hora(s) (HH), minuto(s) (MM) <br>DD-MM-AAAA HH:MM
-                                  </small>
+                               
                               </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                                 <label for="data-fim">Data Final <span style="color: red">*</span></label>
                                 <input type="datetime-local" required name="data-fim" class="form-control" id="data-fim" placeholder="DD-MM-AAAA HH:MM">
-                                <small id="passwordHelpBlock" class="form-text text-muted">
-                                  É obrigatorio o formato dia (DD), mês (MM), ano (AAAA), hora(s) (HH), minuto(s) (MM) <br>DD-MM-AAAA HH:MM
-                                </small>
+                                
                             </div>
                         </div>
                       </div>
-
-                      <script>
-                        $("#data-init").mask("00-00-0000 00:00");
-                        $("#data-fim").mask("00-00-0000 00:00");
-                      </script>
 
                       <div class="row">
                         <div class="col">
@@ -150,30 +141,54 @@
                           <div class="form-group">
                               <label for="lance-inicial">Lance ínicial</label>
                               <input type="text" name="lance-inicial" onkeyup="formatarMoeda()" class="form-control" id="lance-inicial"  placeholder="Ex: 15,493.97" >
-                              <script>
-                                
-                                function formatarMoeda(){
-                                  var elemento = document.getElementById('lance-inicial');
-                                  var valor = elemento.value;
-                                  
-                                  if(valor != "") {
-                                    valor = valor + '';
-                                    valor = parseInt(valor.replace(/[\D]+/g,''));
-                                    valor = valor + '';
-                                    valor = valor.replace(/([0-9]{2})$/g, ",$1");
-
-                                    if (valor.length > 6) {
-                                      valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-                                    }
-
-                                    elemento.value = valor;
-                                  }
-
-                                }
-                              </script>
                           </div>
                         </div>
                         <div class="col">
+                          <div class="form-group">
+                              <label for="lance-minimo">Lance Minimo</label>
+                              <input type="text"  name="lance-minimo" id="lance-minimo" onkeyup="formatarMoeda()" onfocus="formatarMoeda()" class="form-control">
+                          </div>
+                        </div>
+                        <script>
+                          $(function(){
+                            formatarMoeda()
+                          })
+                          function formatarMoeda(){
+                            var elemento = document.getElementById('lance-inicial');
+                            var valor = elemento.value;
+                            
+                            if(valor != "") {
+                              valor = valor + '';
+                              valor = parseInt(valor.replace(/[\D]+/g,''));
+                              valor = valor + '';
+                              valor = valor.replace(/([0-9]{2})$/g, ",$1");
+  
+                              if (valor.length > 6) {
+                                valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+                              }
+  
+                              elemento.value = valor;
+                            }
+                            var elemento = document.getElementById('lance-minimo');
+                            var valor = elemento.value;
+                            
+                            if(valor != "") {
+                              valor = valor + '';
+                              valor = parseInt(valor.replace(/[\D]+/g,''));
+                              valor = valor + '';
+                              valor = valor.replace(/([0-9]{2})$/g, ",$1");
+  
+                              if (valor.length > 6) {
+                                valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+                              }
+  
+                              elemento.value = valor;
+                            }
+                          }
+                        </script>
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
                           <div class="form-group">
                               <label for="tipo">Tipo <span style="color: red">*</span></label>
                               <select name="tipo" id="tipo" required class="form-control">

@@ -61,7 +61,7 @@
                         <div class="row">
                           <div class="col">
                               <div class="form-group">
-                                <img src="{{ Storage::url($lote->foto)}}" style="width: 100px" alt="">
+                                <img src="{{ Storage::url($lote->foto)}}" style="width: 100px; margin: 5px;" alt="">
                                   <label for="foto">Foto pricipal <span style="color: red">*</span></label>
                                   <input type="file" name="foto" class="form-control-file" accept="image/*" id="foto" placeholder="foto" >
                               </div>
@@ -106,23 +106,17 @@
                           <div class="col">
                               <div class="form-group">
                                   <label for="data-init">Data ínicio <span style="color: red">*</span></label>
-                                  <input type="datetime-local" required  value="{{$lote->data_init}}" name="data-init" class="form-control" id="data-init" placeholder="DD-MM-AAAA HH:MM">
+                                  <input type="datetime-local" required  value="{{str_replace(" ", "T", $lote->data_init)}}" name="data-init" class="form-control" id="data-init" placeholder="DD-MM-AAAA HH:MM">
                                   
                               </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                                 <label for="data-fim">Data Final <span style="color: red">*</span></label>
-                                <input type="datetime-local" required  value="{{$lote->data_fim}}" name="data-fim" class="form-control" id="data-fim" placeholder="DD-MM-AAAA HH:MM">
-
+                                <input type="datetime-local" required  value="{{str_replace(" ", "T", $lote->data_fim)}}" name="data-fim" class="form-control" id="data-fim" placeholder="DD-MM-AAAA HH:MM">
                             </div>
                         </div>
                       </div>
-
-                      <script>
-                        $("#data-init1").mask("00-00-0000 00:00");
-                        $("#data-fim1").mask("00-00-0000 00:00");
-                      </script>
 
                       <div class="row">
                         <div class="col">
