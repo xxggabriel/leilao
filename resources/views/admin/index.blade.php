@@ -68,7 +68,7 @@
                   <p>Arremate</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-pie-graph"></i>
                 </div>
                 <a href="{{route("admin-arremate")}}" class="small-box-footer">Main informações <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -83,7 +83,7 @@
                   <p>Novos Clientes</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="ion ion-person-add"></i>
                 </div>
                 <a href="{{route("admin-cliente")}}" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
               </div>
